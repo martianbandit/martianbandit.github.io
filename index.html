@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkEasy - Maîtrisez votre niche. Générez plus de ventes.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&family=Nunito+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://photos.app.goo.gl/abJD5fhLKnMMNM2TA">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F9F7F2; /* Crème clair */
+            color: #1E1E1E; /* Noir Profond */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif; /* Poppins for titles */
+        }
+        .font-nunito-sans {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        .bg-deep-black { background-color: #1E1E1E; }
+        .text-deep-black { color: #1E1E1E; }
+        .bg-soft-orange { background-color: #F79A2E; }
+        .text-soft-orange { color: #F79A2E; }
+        .hover-bg-orange-darker:hover { background-color: #e68a1d; } /* Slightly darker orange for hover */
+        .border-soft-orange { border-color: #F79A2E; }
+        .bg-ninja-red { background-color: #D9412D; }
+        .text-ninja-red { color: #D9412D; }
+        .bg-light-cream { background-color: #F9F7F2; }
+        .text-light-cream { color: #F9F7F2; }
+        .bg-graphite-gray { background-color: #3C3C3C; }
+        .text-graphite-gray { color: #3C3C3C; }
+
+        .hero-visual-placeholder {
+            background-color: #3C3C3C;
+            border: 2px dashed #F79A2E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 300px;
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin-right: 16px;
+        }
+        /* Basic styling for image if Google Photos link fails */
+        img.external-image-link {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc; /* Optional: to see boundaries if image fails */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-black': '#1E1E1E',
+                        'soft-orange': '#F79A2E',
+                        'ninja-red': '#D9412D',
+                        'light-cream': '#F9F7F2',
+                        'graphite-gray': '#3C3C3C',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        opensans: ['Open Sans', 'sans-serif'],
+                        nunitosans: ['Nunito Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-cream text-deep-black">
+
+    <header class="py-6 px-4 sm:px-6 lg:px-8 shadow-md sticky top-0 z-50 bg-light-cream/90 backdrop-blur-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="https://photos.app.goo.gl/k7uVC6eZPkgSiu4aA" alt="MarkEasy Logo" class="h-10 sm:h-12 mr-3 external-image-link" onerror="this.alt='Logo MarkEasy (Erreur de chargement)'; this.src='https://placehold.co/200x50/F9F7F2/1E1E1E?text=MarkEasy';">
+            </a>
+            <p class="font-nunitosans text-sm sm:text-base text-graphite-gray hidden md:block">Le marketing de niche, simplifié.</p>
+            <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="bg-soft-orange text-white font-semibold py-2 px-4 rounded-lg text-sm hover-bg-orange-darker transition duration-300 hidden sm:inline-block">
+                Connexion
+            </a>
+        </div>
+    </header>
+
+    <section id="hero" class="pt-16 pb-10 sm:pt-24 sm:pb-16 px-4 sm:px-6 lg:px-8 text-center bg-light-cream">
+        <div class="container mx-auto">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins text-deep-black mb-6">
+                Maîtrisez votre niche. <span class="text-soft-orange">Générez plus de ventes.</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-graphite-gray max-w-3xl mx-auto mb-10">
+                MarkEasy utilise l’intelligence artificielle pour vous aider à lancer des campagnes marketing puissantes et ciblées, en quelques clics seulement. Dites adieu à la complexité technique et bonjour aux résultats concrets.
+            </p>
+            <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="bg-soft-orange text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl hover-bg-orange-darker transition duration-300 shadow-lg">
+                Créer mon compte gratuitement
+            </a>
+            <div class="mt-12 sm:mt-16 max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl">
+                <img src="https://photos.app.goo.gl/PJUdHX25TiyPCkWw5" alt="Tableau de bord MarkEasy" class="w-full h-auto object-cover external-image-link" onerror="this.alt='Aperçu MarkEasy (Erreur de chargement)'; this.src='https://placehold.co/1200x800/3C3C3C/F9F7F2?text=Visualisation+MarkEasy';">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-16 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black text-center mb-4">
+                Ce que <span class="text-soft-orange">MarkEasy</span> fait pour vous
+            </h2>
+            <p class="text-center text-graphite-gray text-lg mb-12 sm:mb-16 max-w-2xl mx-auto">Découvrez comment notre plateforme IA révolutionne votre approche marketing et vous propulse vers le succès.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+                <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <h3 class="text-xl font-semibold font-poppins text-deep-black">Campagnes IA en un clic</h3>
+                    </div>
+                    <p class="text-graphite-gray flex-grow">Laissez notre algorithme avancé générer des campagnes ultra-ciblées, parfaitement adaptées à votre marché, pour un retour sur investissement maximal.</p>
+                </div>
+                <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <h3 class="text-xl font-semibold font-poppins text-deep-black">Fiches produits optimisées</h3>
+                    </div>
+                    <p class="text-graphite-gray flex-grow">Transformez vos descriptions produits en arguments de vente irrésistibles, rédigés automatiquement par l'IA pour captiver et convertir.</p>
+                </div>
+                <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                        <h3 class="text-xl font-semibold font-poppins text-deep-black">Analyse des données client</h3>
+                    </div>
+                    <p class="text-graphite-gray flex-grow">Comprenez en profondeur qui achète vos produits, pourquoi, et comment leur parler efficacement grâce à des analyses claires et exploitables.</p>
+                </div>
+                <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        <h3 class="text-xl font-semibold font-poppins text-deep-black">Outils de stratégie personnalisée (OSP)</h3>
+                    </div>
+                    <p class="text-graphite-gray flex-grow">Recevez des suggestions concrètes et des plans d'action marketing à fort impact, priorisés pour ne jamais manquer une opportunité de croissance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="use-case" class="py-16 sm:py-20 bg-light-cream">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black mb-6">
+                    Une solution pensée pour les <span class="text-soft-orange">entrepreneurs numériques</span> ambitieux
+                </h2>
+                <p class="text-lg text-graphite-gray mb-8">
+                    Que vous soyez e-commerçant, créateur de contenu, formateur en ligne ou coach indépendant, MarkEasy est votre allié stratégique. Nous vous libérons des complexités et des tâches chronophages du marketing technique pour que vous puissiez vous reconcentrer sur ce que vous faites de mieux : développer vos offres et servir vos clients.
+                </p>
+                <p class="text-lg text-graphite-gray">
+                    Avec MarkEasy, la croissance de votre activité n'est plus un casse-tête, mais une conséquence naturelle de stratégies marketing intelligentes et automatisées.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-markeasy" class="py-16 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black text-center mb-12 sm:mb-16">
+                Pourquoi choisir <span class="text-soft-orange">MarkEasy</span> ?
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10 items-start">
+                <div class="space-y-8">
+                    <div class="flex">
+                        <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
+                        <div>
+                            <h3 class="text-xl font-semibold font-poppins text-deep-black">Simplicité Radicale</h3>
+                            <p class="text-graphite-gray mt-1">Une interface utilisateur pensée pour être intuitive dès la première connexion. Obtenez des résultats concrets rapidement, sans courbe d'apprentissage abrupte.</p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                         <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7zM12 5v2m0 10v2"></path></svg>
+                        <div>
+                            <h3 class="text-xl font-semibold font-poppins text-deep-black">Intelligence à Votre Service</h3>
+                            <p class="text-graphite-gray mt-1">Profitez de la puissance de notre IA de pointe, entraînée pour analyser les marchés de niche et concevoir des stratégies marketing plus intelligentes et plus performantes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex">
+                        <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <div>
+                            <h3 class="text-xl font-semibold font-poppins text-deep-black">Focus sur la Croissance Accélérée</h3>
+                            <p class="text-graphite-gray mt-1">Automatisez les aspects répétitifs du marketing digital. Consacrez votre temps et votre énergie à l'innovation et au développement de votre cœur de métier.</p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <div>
+                            <h3 class="text-xl font-semibold font-poppins text-deep-black">Conçu pour les Indépendants et PME</h3>
+                            <p class="text-graphite-gray mt-1">MarkEasy est spécifiquement adapté aux besoins des entrepreneurs solo et des petites équipes qui veulent un impact maximal sans avoir besoin d'une grande équipe marketing dédiée.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonial" class="py-16 sm:py-20 bg-graphite-gray text-light-cream">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <img src="https://photos.app.goo.gl/abJD5fhLKnMMNM2TA" alt="Icône MarkEasy Ninja" class="h-16 w-16 mx-auto mb-6 rounded-full shadow-lg bg-soft-orange p-2 external-image-link" onerror="this.alt='Icône Ninja (Erreur de chargement)'; this.src='https://placehold.co/64x64/F79A2E/FFFFFF?text=M';">
+                <blockquote class="text-xl sm:text-2xl italic mb-6">
+                    « Grâce à MarkEasy, j’ai automatisé 80 % de mon marketing et doublé mes conversions en 3 semaines. C'est un véritable game-changer pour ma boutique ! »
+                </blockquote>
+                <p class="font-semibold text-lg mb-8">– Sarah B., Fondatrice d’une boutique Shopify</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-12">
+                    <div class="text-center">
+                        <p class="text-3xl sm:text-4xl font-bold text-soft-orange">+1 000</p>
+                        <p class="text-sm uppercase tracking-wider">utilisateurs conquis</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl sm:text-4xl font-bold text-soft-orange">4,9/5</p>
+                        <p class="text-sm uppercase tracking-wider">noté sur AppIndex</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup" class="py-16 sm:py-24 bg-light-cream text-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black mb-6">
+                Prêt(e) à booster votre activité avec l’IA ?
+            </h2>
+            <p class="text-lg text-graphite-gray max-w-xl mx-auto mb-10">Rejoignez des milliers d'entrepreneurs qui transforment déjà leur marketing avec MarkEasy.</p>
+            <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="bg-soft-orange text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl hover-bg-orange-darker transition duration-300 shadow-lg">
+                Je crée mon compte maintenant
+            </a>
+            <p class="text-graphite-gray mt-4 text-sm">
+                C’est gratuit pour commencer, sans engagement. Annulation en un clic.
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-deep-black text-light-cream">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="sm:flex sm:justify-between sm:items-center">
+                <div class="mb-4 sm:mb-0">
+                    <a href="#" class="flex items-center justify-center sm:justify-start">
+                        <img src="https://photos.app.goo.gl/abJD5fhLKnMMNM2TA" alt="Icône MarkEasy" class="h-8 w-8 mr-2 bg-soft-orange rounded-full p-1 external-image-link" onerror="this.alt='M'; this.src='https://placehold.co/32x32/F79A2E/FFFFFF?text=M';">
+                        <span class="font-nunitosans font-bold text-xl">MarkEasy</span>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-400 mb-2 sm:mb-0">&copy; <span id="currentYear"></span> MarkEasy. Tous droits réservés.</p>
+                <p class="text-sm text-gray-400">Le marketing de niche, simplifié.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only prevent default if it's truly an internal anchor, not for external links
+                if (this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
