@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NinjaLeads - Maîtrisez votre niche. Générez plus de ventes.</title>
+    <title>NinjaLead.ai - Maîtrisez votre niche. Générez plus de ventes.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <!-- Importation des polices Open Sans, Poppins et Nunito Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="./IMG_5203.png">
     <style>
+        /* Styles de base pour le corps et les titres */
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: #F9F7F2; /* Crème clair */
             color: #1E1E1E; /* Noir Profond */
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif; /* Poppins for titles */
+            font-family: 'Poppins', sans-serif; /* Poppins pour les titres */
         }
         .font-nunito-sans {
             font-family: 'Nunito Sans', sans-serif;
         }
+
+        /* Définition des couleurs personnalisées */
         .bg-deep-black { background-color: #1E1E1E; }
         .text-deep-black { color: #1E1E1E; }
         .bg-soft-orange { background-color: #F79A2E; }
         .text-soft-orange { color: #F79A2E; }
-        .hover-bg-orange-darker:hover { background-color: #e68a1d; } /* Slightly darker orange for hover */
+        .hover-bg-orange-darker:hover { background-color: #e68a1d; } /* Orange légèrement plus foncé au survol */
         .border-soft-orange { border-color: #F79A2E; }
         .bg-ninja-red { background-color: #D9412D; }
         .text-ninja-red { color: #D9412D; }
@@ -34,6 +38,7 @@
         .bg-graphite-gray { background-color: #3C3C3C; }
         .text-graphite-gray { color: #3C3C3C; }
 
+        /* Styles pour les placeholders et icônes de fonctionnalités */
         .hero-visual-placeholder {
             background-color: #3C3C3C;
             border: 2px dashed #F79A2E;
@@ -48,25 +53,168 @@
             height: 48px;
             margin-right: 16px;
         }
-        /* Basic styling for image if Google Photos link fails */
+        /* Styles pour les images externes (avec fallback) */
         img.external-image-link {
             display: block;
             max-width: 100%;
             height: auto;
-            border: none; /* Optional: to see boundaries if image fails */
+            border: none; /* Optionnel : pour voir les limites si l'image ne charge pas */
         }
 
-        /* Specific styles for the second header image */
-        .header-second-image {
-            /* position: absolute;
-            bottom: 0;
-            left: 50%; /* Center horizontally */
-            /* transform: translateX(-50%); /* Adjust for centering */
-            width: 85px; /* Keep original width */
-            height: 100px; /* Keep original height */
+        /* Styles du Carousel de Témoignages */
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto; /* Active le défilement horizontal */
+            scroll-snap-type: x mandatory; /* Force le "claquement" sur chaque élément au défilement */
+            -webkit-overflow-scrolling: touch; /* Améliore le défilement sur iOS */
+            scrollbar-width: none; /* Cache la barre de défilement pour Firefox */
+            -ms-overflow-style: none;  /* Cache la barre de défilement pour IE et Edge */
+        }
+        /* Cache la barre de défilement pour Chrome, Safari et Opera */
+        .testimonial-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .testimonial-item {
+            flex: 0 0 auto; /* Ne pas grandir, ne pas rétrécir, taille de base automatique */
+            width: 90%; /* Ajuste la largeur pour la vue mobile */
+            scroll-snap-align: start; /* Alignement du défilement sur le début de l'élément */
+            margin-right: 20px; /* Espacement entre les éléments */
+        }
+        /* Responsive : 2 éléments sur les écrans de taille moyenne */
+        @media (min-width: 768px) {
+            .testimonial-item {
+                width: 45%;
+            }
+        }
+        /* Responsive : 3 éléments sur les grands écrans */
+        @media (min-width: 1024px) {
+            .testimonial-item {
+                width: 30%;
+            }
+        }
+
+        /* Styles de la Bulle de Chat Flottante */
+        .floating-chat-bubble {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100; /* Assure que la bulle est au-dessus des autres éléments */
+        }
+        .chatbot-panel {
+            position: fixed;
+            bottom: 6rem; /* Au-dessus de la bulle de chat */
+            right: 2rem;
+            width: 90vw; /* Largeur maximale pour le mobile */
+            max-width: 380px; /* Largeur fixe pour le bureau */
+            height: 70vh; /* Hauteur maximale pour le mobile */
+            max-height: 500px; /* Hauteur fixe pour le bureau */
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Ombre portée pour un effet de profondeur */
+            display: flex;
+            flex-direction: column;
+            transform: translateX(120%); /* Commence hors de l'écran (à droite) */
+            transition: transform 0.3s ease-in-out; /* Animation de transition */
+            border: 1px solid #e2e8f0; /* Bordure légère */
+        }
+        .chatbot-panel.open {
+            transform: translateX(0); /* Glisse vers l'intérieur (visible) */
+        }
+        .chat-messages {
+            flex-grow: 1; /* Prend l'espace disponible */
+            overflow-y: auto; /* Active le défilement vertical si nécessaire */
+            padding: 1rem;
+            background-color: #f9fafb; /* Fond légèrement différent pour les messages */
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .chat-message {
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            max-width: 85%; /* Limite la largeur du message */
+        }
+        .chat-message.user {
+            background-color: #F79A2E; /* Couleur orange pour les messages utilisateur */
+            color: white;
+            align-self: flex-end; /* Aligne les messages utilisateur à droite */
+            margin-left: auto;
+        }
+        .chat-message.bot {
+            background-color: #e2e8f0; /* Couleur grise pour les messages du bot */
+            color: #1E1E1E;
+            align-self: flex-start; /* Aligne les messages du bot à gauche */
+            margin-right: auto;
+        }
+        .chat-input-area {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .chat-input-area input {
+            flex-grow: 1;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-right: 0.5rem;
+        }
+        .chat-input-area button {
+            background-color: #F79A2E;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .chat-input-area button:hover {
+            background-color: #e68a1d;
+        }
+
+        /* Styles de l'Accordéon (FAQ) */
+        .accordion-item {
+            border-bottom: 1px solid #e2e8f0; /* Ligne de séparation entre les questions */
+        }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            cursor: pointer; /* Indique que l'élément est cliquable */
+            font-weight: 600;
+            color: #1E1E1E;
+        }
+        .accordion-content {
+            max-height: 0; /* Cache le contenu par défaut */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-bottom 0.3s ease-out; /* Animation pour l'ouverture/fermeture */
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: fit-content; /* Utilise fit-content pour s'adapter à la hauteur réelle du contenu */
+            padding-bottom: 1rem; /* Ajoute du padding une fois ouvert */
+        }
+        /* Animation pour l'icône de la flèche de l'accordéon */
+        .accordion-arrow.rotate-180 {
+            transform: rotate(180deg);
+        }
+        /* Style pour l'indicateur de saisie du chatbot */
+        .typing-indicator span {
+            animation: bounce 0.6s infinite alternate;
+            display: inline-block;
+            margin-left: 2px;
+        }
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
         }
     </style>
     <script>
+        // Configuration Tailwind CSS étendue
         tailwind.config = {
             theme: {
                 extend: {
@@ -89,55 +237,100 @@
 </head>
 <body class="bg-light-cream text-deep-black">
 
+    <!-- Section d'en-tête (Header) -->
     <header class="py-6 px-4 sm:px-6 lg:px-8 shadow-md sticky top-0 z-50 bg-light-cream/90 backdrop-blur-md">
         <div class="container mx-auto flex justify-between items-center relative">
             <div class="flex items-center">
                 <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="flex items-center">
-                    <img src="./IMG_5099.png" alt="MarkEasy Logo" width="85" height="90" class="mr-3 external-image-link" onerror="this.alt='Logo MarkEasy (Erreur de chargement)'; this.src='https://placehold.co/200x50/F9F7F2/1E1E1E?text=MarkEasy';">
-                    <img src="./ninjaleadnom.png" alt="NinjaLead Logo"  width="85" height="100" class="external-image-link" onerror="this.alt='Logo NinjaLead (Erreur de chargement)'; this.src='https://placehold.co/200x50/F9F7F2/1E1E1E?text=NinjaLead';">
+                    <!-- Logo NinjaLead.ai -->
+                    <img src="./IMG_5099.png" alt="NinjaLead.ai Logo" width="85" height="90" class="mr-3 rounded-full external-image-link" onerror="this.alt='Logo NinjaLead.ai (Erreur de chargement)'; this.src='https://placehold.co/85x90/F9F7F2/1E1E1E?text=NinjaLead.ai';">
+                    <!-- Texte du logo NinjaLead -->
+                    <img src="./ninjaleadnom.png" alt="NinjaLead Logo"  width="85" height="100" class="external-image-link" onerror="this.alt='Logo NinjaLead (Erreur de chargement)'; this.src='https://placehold.co/85x100/F9F7F2/1E1E1E?text=NinjaLead';">
                 </a>
             </div>
-            <p class="font-nunitosans text-sm sm:text-base text-graphite-gray hidden md:block">Le marketing de niche, simplifié.</p>
+            <p class="font-nunitosans text-sm sm:text-base text-graphite-gray hidden md:block">Le marketing, c’est facile… quand on a un Ninja dans sa poche!</p>
             <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="bg-soft-orange text-white font-semibold py-2 px-4 rounded-lg text-sm hover-bg-orange-darker transition duration-300 hidden sm:inline-block">
                 Je crée mon compte maintenant
             </a>
         </div>
     </header>
 
+    <!-- Section Hero (principale) -->
     <section id="hero" class="pt-16 pb-10 sm:pt-24 sm:pb-16 px-4 sm:px-6 lg:px-8 text-center bg-light-cream">
         <div class="container mx-auto">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins text-deep-black mb-6">
                 Maîtrisez votre niche. <span class="text-soft-orange">Générez plus de ventes.</span>
             </h1>
             <p class="text-lg sm:text-xl text-graphite-gray max-w-3xl mx-auto mb-10">
-                MarkEasy utilise l’intelligence artificielle pour vous aider à lancer des campagnes marketing puissantes et ciblées, en quelques clics seulement. Dites adieu à la complexité technique et bonjour aux résultats concrets.
+                NinjaLead.ai utilise l’intelligence artificielle pour vous aider à lancer des campagnes marketing puissantes et ciblées, en quelques clics seulement. Dites adieu à la complexité technique et bonjour aux résultats concrets.
             </p>
             <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="bg-soft-orange text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl hover-bg-orange-darker transition duration-300 shadow-lg">
                 Créer mon compte gratuitement
             </a>
             <div class="mt-12 sm:mt-16 max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl">
             </div>
-<iframe
-    src="https://yivqqitt.gensparkspace.com/"
-    frameborder="0"
-    width="100%"
-    height="450"
-    allowfullscreen="true"
-    mozallowfullscreen="true"
-    webkitallowfullscreen="true"
-    title="Présentation NinjaLead.ai"
-    class="w-full rounded-lg shadow-2xl"
-></iframe>
+            <!-- Intégration de la vidéo de présentation -->
+            <iframe
+                src="https://yivqqitt.gensparkspace.com/"
+                frameborder="0"
+                width="100%"
+                height="450"
+                allowfullscreen="true"
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true"
+                title="Présentation NinjaLead.ai"
+                class="w-full rounded-lg shadow-2xl"
+            ></iframe>
         </div>
     </section>
 
+    <!-- Nouvelle Section : Comment ça marche -->
+    <section id="how-it-works" class="py-16 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black text-center mb-12 sm:mb-16">
+                Comment <span class="text-soft-orange">NinjaLead.ai</span> fonctionne ?
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
+                <!-- Étape 1 -->
+                <div class="flex flex-col items-center text-center p-6 bg-light-cream rounded-lg shadow-lg">
+                    <div class="w-16 h-16 bg-soft-orange rounded-full flex items-center justify-center mb-6">
+                        <!-- Icône pour l'objectif -->
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold font-poppins text-deep-black mb-3">1. Définissez votre objectif</h3>
+                    <p class="text-graphite-gray">Indiquez simplement à NinjaLead.ai ce que vous souhaitez accomplir : augmenter vos ventes, générer des leads, améliorer la visibilité, etc.</p>
+                </div>
+                <!-- Étape 2 -->
+                <div class="flex flex-col items-center text-center p-6 bg-light-cream rounded-lg shadow-lg">
+                    <div class="w-16 h-16 bg-soft-orange rounded-full flex items-center justify-center mb-6">
+                        <!-- Icône pour la stratégie IA -->
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold font-poppins text-deep-black mb-3">2. L'IA génère la stratégie</h3>
+                    <p class="text-graphite-gray">Notre IA analyse votre niche et crée une stratégie marketing personnalisée, incluant les campagnes et contenus optimisés.</p>
+                </div>
+                <!-- Étape 3 -->
+                <div class="flex flex-col items-center text-center p-6 bg-light-cream rounded-lg shadow-lg">
+                    <div class="w-16 h-16 bg-soft-orange rounded-full flex items-center justify-center mb-6">
+                        <!-- Icône pour le lancement et l'optimisation -->
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold font-poppins text-deep-black mb-3">3. Lancez et optimisez</h3>
+                    <p class="text-graphite-gray">Validez les propositions de l'IA, lancez vos campagnes et suivez les performances en temps réel pour des ajustements rapides.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Fonctionnalités -->
     <section id="features" class="py-16 sm:py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black text-center mb-4">
-                Ce que <span class="text-soft-orange">MarkEasy</span> fait pour vous
+                Ce que <span class="text-soft-orange">NinjaLead.ai</span> fait pour vous
             </h2>
             <p class="text-center text-graphite-gray text-lg mb-12 sm:mb-16 max-w-2xl mx-auto">Découvrez comment notre plateforme IA révolutionne votre approche marketing et vous propulse vers le succès.</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+                <!-- Fonctionnalité 1 -->
                 <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                     <div class="flex items-center mb-4">
                         <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -145,6 +338,7 @@
                     </div>
                     <p class="text-graphite-gray flex-grow">Laissez notre algorithme avancé générer des campagnes ultra-ciblées, parfaitement adaptées à votre marché, pour un retour sur investissement maximal.</p>
                 </div>
+                <!-- Fonctionnalité 2 -->
                 <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                     <div class="flex items-center mb-4">
                         <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
@@ -152,6 +346,7 @@
                     </div>
                     <p class="text-graphite-gray flex-grow">Transformez vos descriptions produits en arguments de vente irrésistibles, rédigés automatiquement par l'IA pour captiver et convertir.</p>
                 </div>
+                <!-- Fonctionnalité 3 -->
                 <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                     <div class="flex items-center mb-4">
                         <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
@@ -159,6 +354,7 @@
                     </div>
                     <p class="text-graphite-gray flex-grow">Comprenez en profondeur qui achète vos produits, pourquoi, et comment leur parler efficacement grâce à des analyses claires et exploitables.</p>
                 </div>
+                <!-- Fonctionnalité 4 -->
                 <div class="bg-light-cream p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
                     <div class="flex items-center mb-4">
                         <svg class="feature-icon text-soft-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
@@ -170,30 +366,34 @@
         </div>
     </section>
 
+    <!-- Section Cas d'utilisation -->
     <section id="use-case" class="py-16 sm:py-20 bg-light-cream">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black mb-6">
                     Une solution pensée pour les <span class="text-soft-orange">entrepreneurs numériques</span> ambitieux
                 </h2>
-                <img src="./IMG_5202.png" alt="Ninja et Dame entrepreneurs" width="220" height="260" class="mx-auto block external-image-link mb-3" onerror="this.alt='Image Ninja et Dame (Erreur de chargement)'; this.src='https://placehold.co/220x260/F9F7F2/1E1E1E?text=Image';">
+                <!-- [attachment_0](attachment) -->
+                <img src="./IMG_5202.png" alt="Ninja et Dame entrepreneurs" width="220" height="260" class="mx-auto block external-image-link mb-3 rounded-lg" onerror="this.alt='Image Ninja et Dame (Erreur de chargement)'; this.src='https://placehold.co/220x260/F9F7F2/1E1E1E?text=Image';">
                 <p class="text-lg text-graphite-gray mb-8">
-                    Que vous soyez e-commerçant, créateur de contenu, formateur en ligne ou coach indépendant, MarkEasy est votre allié stratégique. Nous vous libérons des complexités et des tâches chronophages du marketing technique pour que vous puissiez vous reconcentrer sur ce que vous faites de mieux : développer vos offres et servir vos clients.
+                    Que vous soyez e-commerçant, créateur de contenu, formateur en ligne ou coach indépendant, NinjaLead.ai est votre allié stratégique. Nous vous libérons des complexités et des tâches chronophages du marketing technique pour que vous puissiez vous reconcentrer sur ce que vous faites de mieux : développer vos offres et servir vos clients.
                 </p>
                 <p class="text-lg text-graphite-gray">
-                    Avec MarkEasy, la croissance de votre activité n'est plus un casse-tête, mais une conséquence naturelle de stratégies marketing intelligentes et automatisées.
+                    Avec NinjaLead.ai, la croissance de votre activité n'est plus un casse-tête, mais une conséquence naturelle de stratégies marketing intelligentes et automatisées.
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- Section Pourquoi choisir NinjaLead.ai -->
     <section id="why-markeasy" class="py-16 sm:py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black text-center mb-12 sm:mb-16">
-                Pourquoi choisir <span class="text-soft-orange">MarkEasy</span> ?
+                Pourquoi choisir <span class="text-soft-orange">NinjaLead.ai</span> ?
             </h2>
             <div class="grid md:grid-cols-2 gap-8 sm:gap-10 items-start">
                 <div class="space-y-8">
+                    <!-- Avantage 1 -->
                     <div class="flex">
                         <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
                         <div>
@@ -201,6 +401,7 @@
                             <p class="text-graphite-gray mt-1">Une interface utilisateur pensée pour être intuitive dès la première connexion. Obtenez des résultats concrets rapidement, sans courbe d'apprentissage abrupte.</p>
                         </div>
                     </div>
+                    <!-- Avantage 2 -->
                     <div class="flex">
                          <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 19c-3.866 0-7-3.134-7-7s3.134-7 7-7 7 3.134 7 7-3.134 7-7 7zM12 5v2m0 10v2"></path></svg>
                         <div>
@@ -210,6 +411,7 @@
                     </div>
                 </div>
                 <div class="space-y-8">
+                    <!-- Avantage 3 -->
                     <div class="flex">
                         <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         <div>
@@ -217,11 +419,12 @@
                             <p class="text-graphite-gray mt-1">Automatisez les aspects répétitifs du marketing digital. Consacrez votre temps et votre énergie à l'innovation et au développement de votre cœur de métier.</p>
                         </div>
                     </div>
+                    <!-- Avantage 4 -->
                     <div class="flex">
                         <svg class="flex-shrink-0 h-8 w-8 text-soft-orange mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         <div>
                             <h3 class="text-xl font-semibold font-poppins text-deep-black">Conçu pour les Indépendants et PME</h3>
-                            <p class="text-graphite-gray mt-1">MarkEasy est spécifiquement adapté aux besoins des entrepreneurs solo et des petites équipes qui veulent un impact maximal sans avoir besoin d'une grande équipe marketing dédiée.</p>
+                            <p class="text-graphite-gray mt-1">NinjaLead.ai est spécifiquement adapté aux besoins des entrepreneurs solo et des petites équipes qui veulent un impact maximal sans avoir besoin d'une grande équipe marketing dédiée.</p>
                         </div>
                     </div>
                 </div>
@@ -229,12 +432,49 @@
         </div>
     </section>
 
-    <section id="testimonial" class="py-16 sm:py-20 bg-graphite-gray text-light-cream">
+    <!-- Nouvelle Section : Témoignages Clients (Carousel) -->
+    <section id="testimonials" class="py-16 sm:py-20 bg-graphite-gray text-light-cream">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <img src="https://raw.githubusercontent.com/martianbandit/martianbandit.github.io/refs/heads/main/Generated%20Image%20May%2031%2C%202025%20-%203_24PM.jpeg" alt="Icône MarkEasy Ninja" style="border: none; box-shadow: none;" class="h-21 w-20 mx-auto mb-6 rounded-full p-2 external-image-link" onerror="this.alt='Icône Ninja (Erreur de chargement)'; this.src='https://placehold.co/64x64/F79A2E/FFFFFF?text=M';">
+            <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-center mb-12">
+                Ce que nos clients <span class="text-soft-orange">disent de nous</span>
+            </h2>
+            <!-- Conteneur du carousel défilant -->
+            <div class="testimonial-carousel pb-6">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-item bg-white text-deep-black p-8 rounded-lg shadow-xl mr-4 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/F79A2E/FFFFFF?text=Client+1" alt="Avatar Client 1" class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-soft-orange">
+                    <p class="text-lg italic mb-4">"NinjaLead.ai a transformé ma façon de faire du marketing. En quelques clics, j'ai pu lancer des campagnes qui m'auraient pris des jours avant. Incroyable !"</p>
+                    <p class="font-semibold text-soft-orange">- Jean Dupont</p>
+                    <p class="text-sm text-graphite-gray">E-commerçant</p>
+                </div>
+                <!-- Témoignage 2 -->
+                <div class="testimonial-item bg-white text-deep-black p-8 rounded-lg shadow-xl mr-4 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/F79A2E/FFFFFF?text=Client+2" alt="Avatar Client 2" class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-soft-orange">
+                    <p class="text-lg italic mb-4">"Les fiches produits générées par l'IA sont d'une qualité exceptionnelle. Mes taux de conversion ont grimpé en flèche !"</p>
+                    <p class="font-semibold text-soft-orange">- Marie Curie</p>
+                    <p class="text-sm text-graphite-gray">Créatrice de Contenu</p>
+                </div>
+                <!-- Témoignage 3 -->
+                <div class="testimonial-item bg-white text-deep-black p-8 rounded-lg shadow-xl mr-4 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/F79A2E/FFFFFF?text=Client+3" alt="Avatar Client 3" class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-soft-orange">
+                    <p class="text-lg italic mb-4">"Je n'aurais jamais pensé qu'une plateforme pouvait analyser mes données client avec autant de précision. NinjaLead.ai est indispensable."</p>
+                    <p class="font-semibold text-soft-orange">- David Martin</p>
+                    <p class="text-sm text-graphite-gray">Coach Indépendant</p>
+                </div>
+                <!-- Témoignage 4 -->
+                <div class="testimonial-item bg-white text-deep-black p-8 rounded-lg shadow-xl mr-4 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/F79A2E/FFFFFF?text=Client+4" alt="Avatar Client 4" class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-soft-orange">
+                    <p class="text-lg italic mb-4">"Grâce aux OSP, je sais exactement où concentrer mes efforts marketing pour une croissance maximale. Un gain de temps énorme !"</p>
+                    <p class="font-semibold text-soft-orange">- Sophie Durand</p>
+                    <p class="text-sm text-graphite-gray">Formatrice en ligne</p>
+                </div>
+            </div>
+            <!-- Témoignage unique (conserve l'ancien témoignage) -->
+            <div class="text-center mt-8">
+                <!-- [attachment_1](attachment) -->
+                <img src="https://raw.githubusercontent.com/martianbandit/martianbandit.github.io/refs/heads/main/Generated%20Image%20May%2031%2C%202025%20-%203_24PM.jpeg" alt="Icône NinjaLead.ai Ninja" style="border: none; box-shadow: none;" class="h-21 w-20 mx-auto mb-6 rounded-full p-2 external-image-link" onerror="this.alt='Icône Ninja (Erreur de chargement)'; this.src='https://placehold.co/64x64/F79A2E/FFFFFF?text=M';">
                 <blockquote class="text-xl sm:text-2xl italic mb-6">
-                    « Grâce à MarkEasy, j’ai automatisé 80 % de mon marketing et doublé mes conversions en 3 semaines. C'est un véritable game-changer pour ma boutique ! »
+                    « Grâce à NinjaLead.ai, j’ai automatisé 80 % de mon marketing et doublé mes conversions en 3 semaines. C'est un véritable game-changer pour ma boutique ! »
                 </blockquote>
                 <p class="font-semibold text-lg mb-8">– Sarah B., Fondatrice d’une boutique Shopify</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-12">
@@ -251,12 +491,154 @@
         </div>
     </section>
 
+    <!-- Nouvelle Section : FAQ (Questions Fréquentes) -->
+    <section id="faq" class="py-16 sm:py-20 bg-light-cream">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black text-center mb-12 sm:mb-16">
+                Questions <span class="text-soft-orange">fréquentes</span>
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <!-- Question 1: Facilité d'utilisation -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-1">
+                        <span>1. NinjaLead.ai est-il vraiment facile à utiliser pour les débutants ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-1">
+                        <p class="text-graphite-gray">Absolument ! NinjaLead.ai a été conçu avec la simplicité en tête. Notre interface intuitive vous guide pas à pas, et l'IA s'occupe de la complexité technique en arrière-plan. Vous serez opérationnel en quelques minutes.</p>
+                    </div>
+                </div>
+                <!-- Question 2: Connaissances en IA -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-2">
+                        <span>2. Ai-je besoin de connaissances en IA pour utiliser NinjaLead.ai ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-2">
+                        <p class="text-graphite-gray">Non, aucune connaissance préalable en intelligence artificielle n'est requise. NinjaLead.ai est votre expert IA intégré, rendant la puissance de l'IA accessible à tous les entrepreneurs, sans effort.</p>
+                    </div>
+                </div>
+                <!-- Question 3: Type d'entreprise -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-3">
+                        <span>3. Est-ce que NinjaLead.ai est adapté à mon type d'entreprise ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-3">
+                        <p class="text-graphite-gray">NinjaLead.ai est idéal pour les e-commerçants, les créateurs de contenu, les formateurs en ligne, les coachs, et toute petite entreprise ou indépendant cherchant à maximiser son impact marketing dans une niche spécifique.</p>
+                    </div>
+                </div>
+                <!-- Question 4: Coût -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-4">
+                        <span>4. Quel est le coût de NinjaLead.ai ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-4">
+                        <p class="text-graphite-gray">Vous pouvez créer votre compte gratuitement et commencer à explorer les fonctionnalités de base. Nous proposons ensuite différentes formules adaptées à vos besoins de croissance, toutes sans engagement et annulables à tout moment.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 5: Marché québécois -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-5">
+                        <span>5. NinjaLead.ai est-il adapté spécifiquement au marché québécois ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-5">
+                        <p class="text-graphite-gray">Oui, absolument ! Nos algorithmes IA sont conçus pour s'adapter à diverses spécificités régionales et culturelles, y compris celles du Québec. Cela nous permet de générer des campagnes et du contenu qui résonnent avec votre audience locale.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 6: Spécificités linguistiques du Québec -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-6">
+                        <span>6. Est-ce que NinjaLead.ai prend en compte les particularités linguistiques du français québécois ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-6">
+                        <p class="text-graphite-gray">Tout à fait ! Notre IA est entraînée sur un vaste corpus de données incluant des nuances linguistiques et des expressions propres au français québécois, garantissant que vos messages sont authentiques et pertinents pour votre clientèle locale.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 7: Support client Québec -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-7">
+                        <span>7. Offrez-vous un support client spécifique pour les utilisateurs québécois ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-7">
+                        <p class="text-graphite-gray">Notre équipe de support est sensibilisée aux fuseaux horaires et aux réalités du marché québécois pour vous offrir une assistance rapide et pertinente, que ce soit par chat, courriel ou via notre centre d'aide.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 8: Politique de remboursement -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-8">
+                        <span>8. Quelle est votre politique de remboursement ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-8">
+                        <p class="text-graphite-gray">Nous sommes si confiants dans la valeur de NinjaLead.ai que nous offrons une **garantie de remboursement à 100%** si vous n'êtes pas satisfait. Consultez nos conditions générales pour plus de détails, mais votre satisfaction est notre priorité.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 9: Système de parrainage -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-9">
+                        <span>9. Comment fonctionne votre système de parrainage et comment gagner des jetons ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-9">
+                        <p class="text-graphite-gray">Notre système de parrainage est simple : partagez votre lien unique avec d'autres entrepreneurs. Dès qu'ils s'inscrivent et commencent à utiliser NinjaLead.ai, vous recevrez des jetons. Ces jetons peuvent être utilisés pour débloquer des fonctionnalités premium ou des crédits supplémentaires.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 10: Jetons pour feedback -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-10">
+                        <span>10. Puis-je gagner des jetons en donnant du feedback ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-10">
+                        <p class="text-graphite-gray">Oui ! Nous valorisons énormément l'avis de nos utilisateurs. Tout feedback constructif, en particulier s'il apporte une valeur ajoutée ou aide à améliorer la plateforme, sera récompensé par des jetons. C'est notre façon de vous remercier de contribuer à l'évolution de NinjaLead.ai.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 11: Durée des résultats -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-11">
+                        <span>11. Combien de temps faut-il pour voir des résultats concrets avec NinjaLead.ai ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-11">
+                        <p class="text-graphite-gray">De nombreux utilisateurs commencent à voir des améliorations significatives de leurs métriques de marketing en quelques jours ou semaines, grâce à la rapidité de création de campagnes et à la précision du ciblage permise par l'IA.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 12: Intégrations -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-12">
+                        <span>12. Puis-je intégrer NinjaLead.ai avec mes outils marketing existants ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-12">
+                        <p class="text-graphite-gray">NinjaLead.ai est conçu pour être flexible. Nous travaillons constamment à l'intégration avec les plateformes et outils marketing les plus populaires pour fluidifier vos workflows. Des informations détaillées sont disponibles dans notre documentation.</p>
+                    </div>
+                </div>
+                <!-- Nouvelle Question 13: Sécurité des données -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-accordion-target="faq-content-13">
+                        <span>13. Comment NinjaLead.ai assure-t-il la sécurité de mes données ?</span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 accordion-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="accordion-content" id="faq-content-13">
+                        <p class="text-graphite-gray">La sécurité de vos données est notre priorité absolue. Nous utilisons des protocoles de cryptage avancés, des serveurs sécurisés et des pratiques de gestion des données conformes aux normes industrielles pour protéger vos informations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section d'appel à l'action final (Signup) -->
     <section id="signup" class="py-16 sm:py-24 bg-light-cream text-center">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl sm:text-4xl font-bold font-poppins text-deep-black mb-6">
                 Prêt(e) à booster votre activité avec l’IA ?
             </h2>
-            <p class="text-lg text-graphite-gray max-w-xl mx-auto mb-10">Rejoignez des milliers d'entrepreneurs qui transforment déjà leur marketing avec MarkEasy.</p>
+            <p class="text-lg text-graphite-gray max-w-xl mx-auto mb-10">Rejoignez des milliers d'entrepreneurs qui transforment déjà leur marketing avec NinjaLead.ai.</p>
             <a href="https://niche-targeter-market-optimizer.replit.app/login?next=%2F" class="bg-soft-orange text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl hover-bg-orange-darker transition duration-300 shadow-lg">
                 Je crée mon compte maintenant
             </a>
@@ -266,29 +648,58 @@
         </div>
     </section>
 
+    <!-- Section Pied de page (Footer) -->
     <footer class="py-8 bg-deep-black text-light-cream">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
             <div class="sm:flex sm:justify-between sm:items-center">
                 <div class="mb-4 sm:mb-0">
                     <a href="#" class="flex items-center justify-center sm:justify-start">
-                        <img src="https://raw.githubusercontent.com/martianbandit/martianbandit.github.io/refs/heads/main/IMG_5201.png" alt="Icône MarkEasy Ninja" style="border: none; box-shadow: none;" class="h-21 w-20 mx-auto mb-6 rounded-full p-2 external-image-link" onerror="this.alt='Icône Ninja (Erreur de chargement)'; this.src='https://placehold.co/64x64/F79A2E/FFFFFF?text=M';">
-                        <span class="font-nunitosans font-bold text-xl">MarkEasy</span>
+                        <!-- [attachment_1](attachment) -->
+                        <img src="https://raw.githubusercontent.com/martianbandit/martianbandit.github.io/refs/heads/main/IMG_5201.png" alt="Icône NinjaLead.ai Ninja" style="border: none; box-shadow: none;" class="h-21 w-20 mx-auto mb-6 rounded-full p-2 external-image-link" onerror="this.alt='Icône Ninja (Erreur de chargement)'; this.src='https://placehold.co/64x64/F79A2E/FFFFFF?text=M';">
+                        <span class="font-nunitosans font-bold text-xl">NinjaLead.ai</span>
                     </a>
                 </div>
-                <p class="text-sm text-gray-400 mb-2 sm:mb-0">&copy; <span id="currentYear"></span> MarkEasy. Tous droits réservés.</p>
-                <p class="text-sm text-gray-400">Le marketing de niche, simplifié.</p>
+                <p class="text-sm text-gray-400 mb-2 sm:mb-0">&copy; <span id="currentYear"></span> NinjaLead.ai. Tous droits réservés.</p>
+                <p class="text-sm text-gray-400">Le marketing, c’est facile… quand on a un Ninja dans sa poche!</p>
             </div>
         </div>
     </footer>
 
+    <!-- Bulle de Chat Flottante et Panneau de Chatbot -->
+    <div class="floating-chat-bubble">
+        <button id="chat-toggle-button" class="bg-ninja-red text-white p-4 rounded-full shadow-lg hover:bg-red-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-ninja-red focus:ring-opacity-50">
+            <!-- Icône de bulle de chat -->
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </button>
+    </div>
+
+    <div id="chatbot-panel" class="chatbot-panel">
+        <div class="bg-soft-orange text-white p-4 rounded-t-lg flex justify-between items-center">
+            <h3 class="font-poppins font-semibold text-lg">NinjaLead Bot</h3>
+            <button id="close-chatbot-button" class="text-white hover:text-gray-200">
+                <!-- Icône de fermeture -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div id="chat-messages" class="chat-messages flex flex-col">
+            <!-- Message d'accueil du bot -->
+            <div class="chat-message bot">Bonjour ! Je suis NinjaLead Bot. Comment puis-je vous aider aujourd'hui ?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Tapez votre message..." class="rounded-lg">
+            <button id="send-chat-button" class="rounded-lg">Envoyer</button>
+        </div>
+    </div>
+
+
     <script>
-        // Set current year in footer
+        // Définit l'année actuelle dans le pied de page
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Smooth scroll for anchor links
+        // Fonctionnalité de défilement fluide pour les liens d'ancrage
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // Only prevent default if it's truly an internal anchor, not for external links
+                // Empêche le comportement par défaut uniquement pour les liens d'ancrage internes valides
                 if (this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
@@ -301,6 +712,146 @@
                 }
             });
         });
+
+        // Fonctionnalité du Chatbot
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const chatbotPanel = document.getElementById('chatbot-panel');
+        const closeChatbotButton = document.getElementById('close-chatbot-button');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendChatButton = document.getElementById('send-chat-button');
+
+        // Ouvre/ferme le panneau du chatbot au clic sur le bouton flottant
+        chatToggleButton.addEventListener('click', () => {
+            chatbotPanel.classList.toggle('open');
+        });
+
+        // Ferme le panneau du chatbot au clic sur le bouton de fermeture
+        closeChatbotButton.addEventListener('click', () => {
+            chatbotPanel.classList.remove('open');
+        });
+
+        // Envoie le message au clic sur le bouton "Envoyer"
+        sendChatButton.addEventListener('click', sendMessage);
+        // Envoie le message à la pression de la touche "Entrée"
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        /**
+         * Envoie le message de l'utilisateur au chatbot et récupère une réponse de l'API Gemini.
+         */
+        async function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage === '') return; // Ne rien faire si le message est vide
+
+            // Affiche le message de l'utilisateur dans la fenêtre de chat
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('chat-message', 'user');
+            userMessageDiv.textContent = userMessage;
+            chatMessages.appendChild(userMessageDiv);
+            chatInput.value = ''; // Efface le champ de saisie
+
+            // Fait défiler jusqu'au bas des messages
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Ajoute un indicateur de saisie pour montrer que le bot "réfléchit"
+            const typingIndicatorDiv = document.createElement('div');
+            typingIndicatorDiv.classList.add('chat-message', 'bot', 'typing-indicator');
+            typingIndicatorDiv.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+            chatMessages.appendChild(typingIndicatorDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Appel à l'API Gemini pour obtenir une réponse
+            try {
+                let chatHistory = [];
+                // Pour une conversation plus contextuelle, vous pouvez ajouter les messages précédents ici.
+                // Dans cet exemple, seul le message actuel de l'utilisateur est envoyé.
+                chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // La clé API sera fournie par l'environnement d'exécution de Canvas
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                // Supprime l'indicateur de saisie
+                chatMessages.removeChild(typingIndicatorDiv);
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const botResponseText = result.candidates[0].content.parts[0].text;
+
+                    // Affiche la réponse du bot
+                    const botMessageDiv = document.createElement('div');
+                    botMessageDiv.classList.add('chat-message', 'bot');
+                    botMessageDiv.textContent = botResponseText;
+                    chatMessages.appendChild(botMessageDiv);
+                } else {
+                    // Gère les cas où la structure de la réponse est inattendue
+                    const errorMessageDiv = document.createElement('div');
+                    errorMessageDiv.classList.add('chat-message', 'bot');
+                    errorMessageDiv.textContent = "Désolé, je n'ai pas pu générer de réponse pour le moment.";
+                    chatMessages.appendChild(errorMessageDiv);
+                    console.error("Structure de la réponse de l'API Gemini inattendue :", result);
+                }
+            } catch (error) {
+                // Gère les erreurs lors de l'appel API
+                if (chatMessages.contains(typingIndicatorDiv)) {
+                    chatMessages.removeChild(typingIndicatorDiv);
+                }
+                const errorMessageDiv = document.createElement('div');
+                errorMessageDiv.classList.add('chat-message', 'bot');
+                errorMessageDiv.textContent = "Une erreur est survenue. Veuillez réessayer plus tard.";
+                chatMessages.appendChild(errorMessageDiv);
+                console.error("Erreur lors de l'appel à l'API Gemini :", error);
+            }
+
+            // Fait défiler jusqu'au bas des messages après la réponse du bot
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Fonctionnalité de l'Accordéon (FAQ)
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const targetId = header.dataset.accordionTarget;
+                const content = document.getElementById(targetId);
+                const arrow = header.querySelector('.accordion-arrow');
+
+                // Ferme l'accordéon si déjà ouvert
+                if (content.classList.contains('open')) {
+                    content.classList.remove('open');
+                    content.style.maxHeight = '0';
+                    arrow.classList.remove('rotate-180');
+                } else {
+                    // Ferme tous les autres accordéons ouverts avant d'en ouvrir un nouveau
+                    document.querySelectorAll('.accordion-content.open').forEach(openContent => {
+                        openContent.classList.remove('open');
+                        openContent.style.maxHeight = '0';
+                        openContent.previousElementSibling.querySelector('.accordion-arrow').classList.remove('rotate-180');
+                    });
+
+                    // Ouvre l'accordéon cliqué
+                    content.classList.add('open');
+                    // Définir max-height à scrollHeight permet une transition fluide pour un contenu de taille variable
+                    content.style.maxHeight = content.scrollHeight + "px"; // Ajuste la hauteur
+                    arrow.classList.add('rotate-180');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
     </script>
 
 </body>
